@@ -1,0 +1,5 @@
+<ul>
+<% @videos.each do |video| %>
+  <li><%= video.title %> -- <%= video.author.name %></li>
+<% end %>
+</ul>

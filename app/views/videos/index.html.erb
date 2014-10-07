@@ -1,5 +1,5 @@
 <ul>
 <% @videos.each do |video| %>
-  <li><%= video.title %> -- <%= video.author.name %></li>
+  <li><%= link_to video.title,controller:'videos',action:'show',id:video.id %>-- <%= video.author.name %>   <%= link_to 'Delete this video',video,method: :delete %></li>
 <% end %>
 </ul>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  get '/videos' => 'videos#index'
+  # get '/videos' => 'videos#index'
+  resources :videos
   root 'videos#index'
+  # get '/videos/:id' =>'videos#show'
+  # get '/videos/new' =>'videos#new'
+  # post '/videos' =>'videos#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

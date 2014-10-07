@@ -1,0 +1,5 @@
+<h2><%= @video.title %></h2>
+<h4>Uploaded by <%= @video.author.name %></h4>
+<iframe src='<%= @video.url %>' width='800px' height='600px'></iframe>
+<%= link_to 'Update',controller:'videos',action:'edit',id:@video.id %>
+<%= link_to 'Delete',@video,method: :delete %>

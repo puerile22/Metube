@@ -12,7 +12,7 @@
   <%= f.text_field :comment %><br>
   <%= f.submit :class=>'comment' %>
 <% end %>
-<ul>
+<ul class='comments'>
   <% @comments.each do |comment| %>
     <li><%= comment.user.name %> <%= comment.updated_at %></li>
     <p><%= comment.comment %></p>

@@ -12,8 +12,11 @@ $('document').ready(function() {
         type:"POST",
         url:"/videos/"+id+"/comments",
         data:{video_id:id,comment:comment,user_id:user_id},
-        success:function(data){
-        }
+      }).done(function(html){
+        var title = $(html).find('.comments').children('li').last();
+        var comment = $(html).find('.comments').children('p').last();
+        $('.comments').append(title);
+        $('.comments').append(comment);
       });
     });
   }

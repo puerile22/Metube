@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   def create
-    binding.pry
-    @comment = Comment.create(user_id:current_user.id,video_id:params[:video_id],comment:params[:comment][:comment])
+    @comment = Comment.create(user_id:params[:user_id],video_id:params[:video_id],comment:params[:comment])
+    redirect_to :controller=>'videos',:action=>'show',:id=>params[:video_id]
   end
 
   def update

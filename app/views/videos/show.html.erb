@@ -1,6 +1,6 @@
 <h2><%= @video.title %></h2>
 <h4>Uploaded by <%= @video.author.name %></h4>
-<iframe src='<%= @video.url %>' width='800px' height='600px'></iframe><br>
+<iframe src='<%= @video.url %>' width='800px' height='600px' allowfullscreen></iframe><br>
 <% if current_user.videos.include?(@video) %>
   <%= link_to 'Update',controller:'videos',action:'edit',id:@video.id %><br>
   <%= link_to 'Delete',@video,method: :delete %><br>
@@ -8,9 +8,9 @@
 <h2>All comments (<%= @comments.length %>)</h2>
 <div>
 <h4>Share your thoughts</h4>
-<%= form_for @comment, :url=>"/videos/#{@video.id}/comments",:action=>'create' do |f| %>
+<%= form_for @comment, :url=>"/videos/#{@video.id}/comments",:action=>'create', :html=>{:class=>@video.id} do |f| %>
   <%= f.text_field :comment %><br>
-  <%= f.submit %>
+  <%= f.submit :class=>'comment' %>
 <% end %>
 <ul>
   <% @comments.each do |comment| %>
@@ -23,3 +23,5 @@
 <% if current_user.playlists != [] %>
   <%=render :template=>"lists/new",:@playlists => @playlists,:@video=>@video,:@list=>@list %>
 <% end %>
+
+<input type='text' class='user_id' name='user_id' style='visibility:hidden;' value='<%= current_user.id %>'>

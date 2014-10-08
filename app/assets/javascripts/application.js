@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require underscore
-
+//= require video
+//= require playlists
 $(function(){ $(document).foundation(); });

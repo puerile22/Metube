@@ -1,5 +1,10 @@
 <ul>
 <% @videos.each do |video| %>
-  <li><%= link_to video.title,controller:'videos',action:'show',id:video.id %>-- <%= video.author.name %>   <%= link_to 'Delete this video',video,method: :delete %></li>
+  <li><%= link_to video.title,controller:'videos',action:'show',id:video.id %>-- <%= video.author.name %>   <%= link_to 'Delete this video',video,method: :delete %>
+  </li>
 <% end %>
 </ul>
+
+<%= link_to 'Create new playlist','playlists/new' %><br>
+<%= link_to 'View playlists','/playlists' %><br>
+<%= link_to 'Create new video','videos/new' %><br>

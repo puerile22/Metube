@@ -1,0 +1,8 @@
+<h2>Playlists</h2>
+<ol>
+  <% @playlists.each do |l| %>
+    <li><%= link_to l.name,"/playlists/#{l.id}" %> -- <%= l.user.name %>  <%= link_to "Edit","/playlists/#{l.id}/edit" %>  <%= link_to "Delete",l,method: :delete %></li> 
+  <% end %>
+</ol>
+
+<%= link_to "Homepage","/" %>

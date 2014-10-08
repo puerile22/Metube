@@ -6,6 +6,9 @@ class VideosController < ApplicationController
   def show
     @id = params[:id].to_i
     @video = Video.find(@id)
+    @playlists = Playlist.all
+    @playlist = Playlist.new
+    @list = List.new
   end
 
   def new

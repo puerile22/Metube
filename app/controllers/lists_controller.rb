@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @list = List.where(playlist_id:params[:id])
   end

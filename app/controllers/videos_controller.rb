@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  before_action :authenticate_user!
   def index
     @videos = Video.all
   end
@@ -6,9 +7,11 @@ class VideosController < ApplicationController
   def show
     @id = params[:id].to_i
     @video = Video.find(@id)
-    @playlists = Playlist.all
+    @playlists = current_user.playlists
     @playlist = Playlist.new
     @list = List.new
+    @comments = @video.comments
+    @comment = Comment.new
   end
 
   def new

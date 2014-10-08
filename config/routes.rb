@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # get '/videos' => 'videos#index'
-  resources :videos
+  resources :videos do
+    resources :comments, :only => [:create]
+  end
+  resources :comments, :only => [:update,:destory]
   root 'videos#index'
   resources :playlists
   resources :lists
+
   # get '/videos/:id' =>'videos#show'
   # get '/videos/new' =>'videos#new'
   # post '/videos' =>'videos#create'

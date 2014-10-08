@@ -1,6 +1,25 @@
 <h2><%= @video.title %></h2>
 <h4>Uploaded by <%= @video.author.name %></h4>
 <iframe src='<%= @video.url %>' width='800px' height='600px'></iframe><br>
-<%= link_to 'Update',controller:'videos',action:'edit',id:@video.id %><br>
-<%= link_to 'Delete',@video,method: :delete %><br>
-<%=render :template=>"lists/new",:@playlists => @playlists,:@video=>@video,:@list=>@list %>
+<% if current_user.videos.include?(@video) %>
+  <%= link_to 'Update',controller:'videos',action:'edit',id:@video.id %><br>
+  <%= link_to 'Delete',@video,method: :delete %><br>
+<% end %>
+<h2>All comments (<%= @comments.length %>)</h2>
+<div>
+<h4>Share your thoughts</h4>
+<%= form_for @comment, :url=>"/videos/#{@video.id}/comments",:action=>'create' do |f| %>
+  <%= f.text_field :comment %><br>
+  <%= f.submit %>
+<% end %>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.user.name %> <%= comment.updated_at %></li>
+    <p><%= comment.comment %></p>
+  <% end %>
+</ul>
+</div>
+
+<% if current_user.playlists != [] %>
+  <%=render :template=>"lists/new",:@playlists => @playlists,:@video=>@video,:@list=>@list %>
+<% end %>

@@ -18,6 +18,7 @@ $('document').ready(function() {
         $('.comments').append(title);
         $('.comments').append(comment);
       });
+      $('#comment_comment').val("");
     });
   }
 });

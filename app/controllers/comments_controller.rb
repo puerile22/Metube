@@ -7,12 +7,13 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(comment:params[:comment][:comment])
-    redirect_to :back
+    @comment.update(comment:params[:comment])
+    # render json: @comment
+    redirect_to :back, status: :see_other
   end
 
   def destroy
     @comment = Comment.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to :back, status: :see_other
   end
 end

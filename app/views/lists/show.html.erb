@@ -1,6 +1,8 @@
 <ul>
 
   <% @list.each do |list| %>
-    <li><%= link_to list.video.title,"/videos/#{list.video.id}" %> -- <%= list.video.author.name %> <%= link_to "Delete",list,method: :delete %></li>
+    <% if !list.video.nil? %>
+      <li><%= link_to list.video.title,"/videos/#{list.video.id}" %> -- <%= list.video.author.name %> <%= link_to "Delete",list,method: :delete %></li>
+    <% end %>
   <% end %>
 </ul>

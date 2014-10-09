@@ -15,16 +15,17 @@
 <ul class='comments'>
   <% @comments.each do |comment| %>
     <li class="<%= comment.id %>"><%= comment.user.name %> <%= comment.updated_at %></li>
-    <p class="<%= comment.id %>"><%= comment.comment %>
+    <div class="<%= comment.id %>"><%= comment.comment %>
       <% if comment.user == current_user %>
-        <%= link_to "edit", '',:class=>'edit' %>
-        <%= form_for comment, :url=>"/comments/#{comment.id}",:action=>'update', :html=>{:class=>@video.id} do |f| %>
+        <!-- <%= link_to "edit", '',:class=>'edit' %> -->
+        <a href="#" class='edit'>edit</a>
+        <%= form_for comment, :url=>"/comments/#{comment.id}",:action=>'update', :html=>{:class=>@video.id,:style => 'display:none;'} do |f| %>
           <%= f.text_field :comment,value:comment.comment %>
           <%= f.submit :class=>'edit-comment',value:"update" %> 
         <% end %>
-        <%= link_to "delete",comment,method: :delete,:class=>'delete' %>
+        <a href="#" class="comment-delete" data-comment-id="<%= comment.id %>">delete</a>
       <% end %> 
-    </p>
+    </div>
   <% end %>
 </ul>
 </div>

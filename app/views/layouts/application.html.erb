@@ -7,10 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>">
-<%= render "shared/nav" %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+  <% if params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" %>
+    <%= render "shared/nav2" %>
+  <% else %>
+    <%= render "shared/nav" %>
+  <% end %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
 
 </body>
 </html>

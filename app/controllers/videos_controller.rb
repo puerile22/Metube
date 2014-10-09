@@ -10,7 +10,7 @@ class VideosController < ApplicationController
     @playlists = current_user.playlists
     @playlist = Playlist.new
     @list = List.new
-    @comments = @video.comments
+    @comments = @video.comments.sort
     @comment = Comment.new
   end
 

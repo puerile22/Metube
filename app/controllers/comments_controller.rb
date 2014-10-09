@@ -6,9 +6,13 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment:params[:comment][:comment])
+    redirect_to :back
   end
 
   def destroy
+    @comment = Comment.find(params[:id]).destroy
+    redirect_to :back
   end
-
 end

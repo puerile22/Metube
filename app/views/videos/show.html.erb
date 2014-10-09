@@ -5,7 +5,7 @@
   <%= link_to 'Update',controller:'videos',action:'edit',id:@video.id %><br>
   <%= link_to 'Delete',@video,method: :delete %><br>
 <% end %>
-<h2>All comments (<%= @comments.length %>)</h2>
+<h2 class='count'>All comments (<%= @comments.length %>)</h2>
 <div>
 <h4>Share your thoughts</h4>
 <%= form_for @comment, :url=>"/videos/#{@video.id}/comments",:action=>'create', :html=>{:class=>@video.id} do |f| %>
@@ -14,8 +14,17 @@
 <% end %>
 <ul class='comments'>
   <% @comments.each do |comment| %>
-    <li><%= comment.user.name %> <%= comment.updated_at %></li>
-    <p><%= comment.comment %></p>
+    <li class="<%= comment.id %>"><%= comment.user.name %> <%= comment.updated_at %></li>
+    <p class="<%= comment.id %>"><%= comment.comment %>
+      <% if comment.user == current_user %>
+        <%= link_to "edit", '',:class=>'edit' %>
+        <%= form_for comment, :url=>"/comments/#{comment.id}",:action=>'update', :html=>{:class=>@video.id} do |f| %>
+          <%= f.text_field :comment,value:comment.comment %>
+          <%= f.submit :class=>'edit-comment',value:"update" %> 
+        <% end %>
+        <%= link_to "delete",comment,method: :delete,:class=>'delete' %>
+      <% end %> 
+    </p>
   <% end %>
 </ul>
 </div>

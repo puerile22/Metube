@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :videos do
     resources :comments, :only => [:create]
   end
-  resources :comments, :only => [:update,:destory]
+  resources :comments, :only => [:update,:destroy]
   root 'videos#index'
   resources :playlists
   resources :lists

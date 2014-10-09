@@ -5,6 +5,7 @@ $('document').ready(function() {
     //... video js code here
     $('.comment').click(function(e){
       e.preventDefault();
+      var count = parseInt($('.count').text().slice(14)) + 1;
       var id = $('form:eq(0)').attr('class');
       var user_id = $('.user_id').val();
       var comment = $('#comment_comment').val();
@@ -17,8 +18,27 @@ $('document').ready(function() {
         var comment = $(html).find('.comments').children('p').last();
         $('.comments').append(title);
         $('.comments').append(comment);
+        $('.count').text("All comments ("+count+")");
       });
       $('#comment_comment').val("");
+    });
+    $('.edit').click(function(e){
+      e.preventDefault();
+    });
+    $('.delete').click(function(e){
+      e.preventDefault();
+      // var count = parseInt($('.count').text().slice(14)) - 1;
+      // var id = $(this).parent().attr("class");
+      // var video_id = $('form:eq(0)').attr('class');
+      // $.ajax({
+      //   type:"DELETE",
+      //   url:"/comments/"+id+"",
+      //   data:{id:id,video_id:video_id}
+      // }).done(function(){
+      //   $(this).parent().remove();
+      //   $('li.'+id+'').remove();
+      //      $('.count').text("All comments ("+count+")");
+      // });
     });
   }
 });

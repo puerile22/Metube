@@ -16,4 +16,5 @@
 //= require underscore
 //= require video
 //= require playlists
+//= require searchbar
 $(function(){ $(document).foundation(); });

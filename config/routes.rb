@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'videos#index'
   resources :playlists
   resources :lists
+  resources :search
 
   # get '/videos/:id' =>'videos#show'
   # get '/videos/new' =>'videos#new'

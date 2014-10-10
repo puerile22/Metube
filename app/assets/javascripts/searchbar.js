@@ -14,6 +14,7 @@ $('document').ready(function(){
         var context={}
         context["title"] = data.items[i].snippet.title;
         context["img"] = data.items[i].snippet.thumbnails.high.url;
+        context["id"] = data.items[i].id.videoId;
         var html = template(context);
         $('.main').append(html);
       }

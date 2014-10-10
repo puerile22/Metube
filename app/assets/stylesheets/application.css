@@ -15,3 +15,12 @@
  *= require videos
 
  */
+ 
+ .row p{
+  display: inline-block;
+  font-size: 15px;
+  overflow: auto;
+ }
+.row {
+  padding-bottom: 30px;
+}

@@ -5,10 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <script id="search-result" type="text/x-handlebars-template">
     <div class='row'>
-      <div class='small-6 small-centered columns'>
+      <a href='' class="{{id}}">
+      <div class='small-8 small-centered columns'>
+        <div class="small-6 column">
         <img src="{{ img }}">
-        <p>{{ title }}</p> 
+        </div>
+        <div class="small-6 column">
+        <p>{{ title }}</p></div>
       </div>
+      </a>
     </div> 
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

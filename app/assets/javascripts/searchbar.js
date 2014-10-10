@@ -1,5 +1,7 @@
+var source = $('#search-result').html();
+var template = Handlebars.compile(source);
 $('document').ready(function(){
-  $('.alert').click(function(e){
+  $('#search').click(function(e){
     e.preventDefault();
     var query = $('input').val();
     $.ajax({
@@ -7,7 +9,14 @@ $('document').ready(function(){
       url:"search/show",
       data:{query:query}
     }).done(function(data){
-      console.log(data);
+      $('.main').empty();
+      for (var i = 0;i < data.items.length;i++) {
+        var context={}
+        context["title"] = data.items[i].snippet.title;
+        context["img"] = data.items[i].snippet.thumbnails.high.url;
+        var html = template(context);
+        $('.main').append(html);
+      }
     });
   });
 });

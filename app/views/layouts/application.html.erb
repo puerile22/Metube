@@ -3,18 +3,23 @@
 <head>
   <title>Metube</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script id="search-result" type="text/x-handlebars-template">
+    <div class='row'>
+      <div class='small-6 small-centered columns'>
+        <img src="{{ img }}">
+        <p>{{ title }}</p> 
+      </div>
+    </div> 
+  </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller] %>">
-  <% if params[:controller] == "devise/sessions" || params[:controller] == "devise/registrations" %>
-    <%= render "shared/nav2" %>
-  <% else %>
-    <%= render "shared/nav" %>
-  <% end %>
+  <%= render "shared/nav" %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= yield %>
-
+  <div class='main'>
+    <%= yield %>
+  </div>
 </body>
 </html>

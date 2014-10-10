@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require handlebars
 //= require underscore
 //= require video
 //= require playlists
 //= require searchbar
 $(function(){ $(document).foundation(); });
+

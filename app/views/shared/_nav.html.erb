@@ -7,7 +7,9 @@
   </ul>
   <section class="top-bar-section">
     <ul class="right">
+      <% if current_user != nil %>
       <li class="active"><a href="#"><%= current_user.name %></a></li>
+      <% end %>
       <li class='active'><%= link_to 'Logout','users/sign_out',method: :delete %></li>
     </ul>
   </section>
